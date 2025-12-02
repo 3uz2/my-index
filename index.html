@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firat | 3uz2</title>
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❄️</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Calligraffitti&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: 'Calligraffitti', cursive;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            cursor: default;
+            overflow-y: auto;
+        }
+        
+        /* YENİ ARKA PLAN */
+        .background-street {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: url('https://i.pinimg.com/1200x/33/40/14/334014570aea08a20b880bfe7f42b107.jpg') center/cover no-repeat;
+            filter: grayscale(100%) brightness(0.3) contrast(1.3);
+            z-index: -5;
+        }
+        
+        /* TÜM GÖRSELLER İÇİN GENEL STİL - BÜYÜTÜLDÜ */
+        .character-container {
+            position: fixed;
+            z-index: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+            filter: brightness(0.5);
+            transform-origin: center;
+            transition: transform 0.4s ease, filter 0.4s ease, box-shadow 0.4s ease !important;
+            animation: borderGlow 3s infinite alternate;
+            /* BÜYÜTÜLMÜŞ BOYUTLAR */
+            width: 224px; /* 174px + 50px = 224px (4.5cm) */
+            height: 328px; /* 243px + 85px = 328px (5.5cm) */
+        }
+        
+        @keyframes borderGlow {
+            0% { box-shadow: 0 0 20px rgba(255, 255, 255, 0.3), 0 0 0 rgba(255, 255, 255, 0.5); }
+            100% { box-shadow: 0 0 40px rgba(255, 255, 255, 0.6), 0 0 60px rgba(255, 255, 255, 0.8); }
+        }
+        
+        /* HOVER EFEKTİ */
+        .character-container:hover {
+            transform: scale(1.15) perspective(1000px) rotateY(5deg) rotateX(5deg) !important;
+            filter: brightness(1) !important;
+            z-index: 100;
+            box-shadow: 0 0 60px rgba(255, 255, 255, 0.9), 0 0 80px rgba(255, 255, 255, 0.9) !important;
+        }
+        
+        /* SOL TARAF - 12 GÖRSEL (2 SÜTUN) */
+        /* Sol sütun 1 (EN SOL - AŞAĞI İNECEK) */
+        .character-left-down-1 {
+            left: 20px;
+            top: 30px;
+            background: url('https://i.pinimg.com/1200x/6f/8e/2b/6f8e2bf091ce405ffded95fbe1bb2bc3.jpg') center/cover no-repeat;
+        }
+        
+        .character-left-down-2 {
+            left: 20px;
+            top: 388px; /* 30 + 328 + 30 = 388px */
+            background: url('https://i.pinimg.com/736x/cd/c6/9f/cdc69f263ef0f8b3b5de4669318336d4.jpg') center/cover no-repeat;
+        }
+        
+        .character-left-down-3 {
+            left: 20px;
+            top: 746px; /* 388 + 328 + 30 = 746px */
+            background: url('https://i.pinimg.com/1200x/c0/ce/e1/c0cee1c300c660f94d5595b3274e7c89.jpg') center/cover no-repeat;
+        }
+        
+        .character-left-down-4 {
+            left: 20px;
+            top: 1104px; /* 746 + 328 + 30 = 1104px */
+            background: url('https://i.pinimg.com/736x/06/51/e3/0651e38c086cbea393f08c21abaa2e15.jpg') center/cover no-repeat;
+        }
+        
+        .character-left-down-5 {
+            left: 20px;
+            top: 1462px; /* 1104 + 328 + 30 = 1462px */
+            background: url('https://i.pinimg.com/1200x/44/83/df/4483df9a5fb1ee01b300d501abb4165d.jpg') center/cover no-repeat;
+        }
+        
+        .character-left-down-6 {
+            left: 20px;
+            top: 1820px; /* 1462 + 328 + 30 = 1820px */
+            background: url('https://i.pinimg.com/1200x/cb/b8/93/cbb89307e1059287eefd1ea930de3b55.jpg') center/cover no-repeat;
+        }
+        
+        /* Sol sütun 2 (YUKARI ÇIKACAK) */
+        .character-left-up-1 {
+            left: 274px; /* 20px + 224px + 30px = 274px */
+            top: 30px;
+            background: url('https://i.pinimg.com/736x/ca/6d/34/ca6d347ba06fb54131b57799f13c5481.jpg') center/cover no-repeat;
+        }
+        
+        .character-left-up-2 {
+            left: 274px;
+            top: 388px;
+            background: url('https://i.pinimg.com/736x/d1/8d/cf/d18dcfb546a3f79b8003e7ac5d686f41.jpg') center/cover no-repeat;
+        }
+        
+        .character-left-up-3 {
+            left: 274px;
+            top: 746px;
+            background: url('https://i.pinimg.com/736x/78/af/4f/78af4fb849cca0b708d6dac13b8c1275.jpg') center/cover no-repeat;
+        }
+        
+        .character-left-up-4 {
+            left: 274px;
+            top: 1104px;
+            background: url('https://i.pinimg.com/736x/0b/2c/df/0b2cdf4655b22e74fa72f3b88b4d3416.jpg') center/cover no-repeat;
+        }
+        
+        .character-left-up-5 {
+            left: 274px;
+            top: 1462px;
+            background: url('https://i.pinimg.com/1200x/d4/54/0e/d4540e5a8394f26afac175972ee1cb59.jpg') center/cover no-repeat;
+        }
+        
+        .character-left-up-6 {
+            left: 274px;
+            top: 1820px;
+            background: url('https://i.pinimg.com/736x/f5/33/07/f53307e034b755c8d5b762b61c200625.jpg') center/cover no-repeat;
+        }
+        
+        /* SAĞ TARAF - 12 GÖRSEL (2 SÜTUN) */
+        /* Sağ sütun 1 (AŞAĞI İNECEK) */
+        .character-right-down-1 {
+            right: 274px; /* 20px + 224px + 30px = 274px */
+            top: 30px;
+            background: url('https://i.pinimg.com/1200x/26/a9/7d/26a97dc2775ad59e85a1cf906063a9e8.jpg') center/cover no-repeat;
+        }
+        
+        .character-right-down-2 {
+            right: 274px;
+            top: 388px;
+            background: url('https://i.pinimg.com/1200x/9b/8e/f7/9b8ef755646bfa5155d397342331deef.jpg') center/cover no-repeat;
+        }
+        
+        .character-right-down-3 {
+            right: 274px;
+            top: 746px;
+            background: url('https://i.redd.it/dlsbxpyfq90d1.jpeg') center/cover no-repeat;
+        }
+        
+        .character-right-down-4 {
+            right: 274px;
+            top: 1104px;
+            background: url('https://i.pinimg.com/736x/7a/0d/ec/7a0dec9f4470b83068688afe12fcc3b9.jpg') center/cover no-repeat;
+        }
+        
+        .character-right-down-5 {
+            right: 274px;
+            top: 1462px;
+            background: url('https://i.pinimg.com/736x/05/70/2a/05702a0619e9f6b5d55cc784fa23d5d0.jpg') center/cover no-repeat;
+        }
+        
+        .character-right-down-6 {
+            right: 274px;
+            top: 1820px;
+            background: url('https://i.pinimg.com/736x/8a/2b/a6/8a2ba62b65c438d8c9db4895047379ae.jpg') center/cover no-repeat;
+        }
+        
+        /* Sağ sütun 2 (EN SAĞ - YUKARI ÇIKACAK) */
+        .character-right-up-1 {
+            right: 20px;
+            top: 30px;
+            background: url('https://i.pinimg.com/736x/70/ab/e0/70abe08d956d7cb96b8026beefac463e.jpg') center/cover no-repeat;
+        }
+        
+        .character-right-up-2 {
+            right: 20px;
+            top: 388px;
+            background: url('https://i.pinimg.com/1200x/4b/e9/2e/4be92e233153ef7842eb814af20a5be5.jpg') center/cover no-repeat;
+        }
+        
+        .character-right-up-3 {
+            right: 20px;
+            top: 746px;
+            background: url('https://i.pinimg.com/736x/05/2b/01/052b01493cbffe63d798e12836dda65d.jpg') center/cover no-repeat;
+        }
+        
+        .character-right-up-4 {
+            right: 20px;
+            top: 1104px;
+            background: url('https://i.pinimg.com/736x/56/76/53/567653dfb7828e0c041dff6d076386a8.jpg') center/cover no-repeat;
+        }
+        
+        .character-right-up-5 {
+            right: 20px;
+            top: 1462px;
+            background: url('https://i.pinimg.com/736x/78/b5/6c/78b56ca35fa3d80855698ecba5b782d5.jpg') center/cover no-repeat;
+        }
+        
+        .character-right-up-6 {
+            right: 20px;
+            top: 1820px;
+            background: url('https://i.pinimg.com/1200x/bd/33/94/bd3394c64728880ac556ee32312679b9.jpg') center/cover no-repeat;
+        }
+        
+        /* ANA İÇERİK */
+        .container {
+            position: relative;
+            z-index: 2;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .main-content {
+            text-align: center;
+            max-width: 800px;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 60px rgba(255, 255, 255, 0.1);
+            margin: 20px 0;
+        }
+        
+        /* ORTADAKİ GÖRSEL - GÜNCELLENMİŞ URL İLE */
+        .center-image {
+            width: 100%;
+            height: 500px;
+            border-radius: 15px;
+            margin: 30px 0;
+            overflow: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 40px rgba(255, 255, 255, 0.1);
+        }
+        
+        .center-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* İSİM */
+        .name-title {
+            font-size: 4.5rem;
+            color: #ffffff;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+        }
+        
+        /* BİLGİLER */
+        .info-section {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+            width: 100%;
+        }
+        
+        .info-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .info-label {
+            font-size: 1.8rem;
+            color: #ffffff;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-align: left;
+        }
+        
+        .info-value {
+            font-size: 2rem;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-align: right;
+        }
+        
+        /* SON SATIR İÇİN KÜÇÜK YAZI BOYUTU */
+        .small-text {
+            font-size: 1.4rem !important;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+        
+        /* FAVORITE FOOD GÖRSELİ */
+        .food-image-large {
+            width: 200px;
+            height: 200px;
+            border-radius: 10px;
+            object-fit: cover;
+            border: 3px solid rgba(255, 255, 255, 0.6);
+            animation: whiteGlow 2s infinite alternate;
+        }
+        
+        @keyframes whiteGlow {
+            0% {
+                box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+                filter: brightness(1);
+            }
+            100% {
+                box-shadow: 0 0 40px rgba(255, 255, 255, 0.8);
+                filter: brightness(1.3);
+            }
+        }
+        
+        /* KAR TANELERİ */
+        .snow-container {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: -3;
+            overflow: hidden;
+        }
+        
+        .snowflake {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0.8;
+            filter: blur(1px);
+        }
+        
+        /* RESPONSIVE */
+        @media (max-width: 1400px) {
+            .character-container {
+                display: none;
+            }
+            .main-content {
+                max-width: 90%;
+                padding: 30px 20px;
+            }
+            .name-title {
+                font-size: 3.5rem;
+            }
+            .info-label {
+                font-size: 1.5rem;
+            }
+            .info-value {
+                font-size: 1.7rem;
+            }
+            .small-text {
+                font-size: 1.2rem !important;
+            }
+            .food-image-large {
+                width: 150px;
+                height: 150px;
+            }
+            .center-image {
+                height: 350px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .info-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+            .info-label, .info-value {
+                width: 100%;
+                text-align: left;
+            }
+            .small-text {
+                font-size: 1.1rem !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- YENİ ARKA PLAN -->
+    <div class="background-street"></div>
+    
+    <!-- KAR TANELERİ -->
+    <div class="snow-container" id="snowContainer"></div>
+    
+    <!-- SOL TARAF - 12 GÖRSEL -->
+    <!-- Sol sütun 1 (EN SOL - AŞAĞI İNECEK) -->
+    <div class="character-container character-left-down-1"></div>
+    <div class="character-container character-left-down-2"></div>
+    <div class="character-container character-left-down-3"></div>
+    <div class="character-container character-left-down-4"></div>
+    <div class="character-container character-left-down-5"></div>
+    <div class="character-container character-left-down-6"></div>
+    
+    <!-- Sol sütun 2 (YUKARI ÇIKACAK) -->
+    <div class="character-container character-left-up-1"></div>
+    <div class="character-container character-left-up-2"></div>
+    <div class="character-container character-left-up-3"></div>
+    <div class="character-container character-left-up-4"></div>
+    <div class="character-container character-left-up-5"></div>
+    <div class="character-container character-left-up-6"></div>
+    
+    <!-- SAĞ TARAF - 12 GÖRSEL -->
+    <!-- Sağ sütun 1 (AŞAĞI İNECEK) -->
+    <div class="character-container character-right-down-1"></div>
+    <div class="character-container character-right-down-2"></div>
+    <div class="character-container character-right-down-3"></div>
+    <div class="character-container character-right-down-4"></div>
+    <div class="character-container character-right-down-5"></div>
+    <div class="character-container character-right-down-6"></div>
+    
+    <!-- Sağ sütun 2 (EN SAĞ - YUKARI ÇIKACAK) -->
+    <div class="character-container character-right-up-1"></div>
+    <div class="character-container character-right-up-2"></div>
+    <div class="character-container character-right-up-3"></div>
+    <div class="character-container character-right-up-4"></div>
+    <div class="character-container character-right-up-5"></div>
+    <div class="character-container character-right-up-6"></div>
+    
+    <!-- ANA İÇERİK -->
+    <div class="container">
+        <div class="main-content">
+            <h1 class="name-title">Firat</h1>
+            
+            <!-- ORTADAKİ GÖRSEL - YENİ URL İLE GÜNCELLENDİ -->
+            <div class="center-image">
+                <img src="https://i.pinimg.com/736x/6e/e4/0a/6ee40a31dcd22a5f2807ec9ec1203ff9.jpg" alt="Center Image">
+            </div>
+            
+            <!-- BİLGİLER -->
+            <div class="info-section">
+                <div class="info-row">
+                    <div class="info-label">Discord:</div>
+                    <div class="info-value">3uz2</div>
+                </div>
+                
+                <div class="info-row">
+                    <div class="info-label">GitHub:</div>
+                    <div class="info-value">3uz2</div>
+                </div>
+                
+                <div class="info-row">
+                    <div class="info-label">YouTube:</div>
+                    <div class="info-value">3uz2</div>
+                </div>
+                
+                <div class="info-row">
+                    <div class="info-label">Steam Friend Code:</div>
+                    <div class="info-value">1862317924</div>
+                </div>
+                
+                <div class="info-row">
+                    <div class="info-label">Age:</div>
+                    <div class="info-value">16</div>
+                </div>
+                
+                <div class="info-row">
+                    <div class="info-label">Favorite Foods:</div>
+                    <div class="info-value">
+                        <span>Femboys</span>
+                        <img src="https://i.pinimg.com/736x/b6/eb/68/b6eb6863c3c54f6600a1343f919f6e68.jpg" 
+                             alt="Favorite Food" 
+                             class="food-image-large">
+                    </div>
+                </div>
+                
+                <div class="info-row">
+                    <div class="info-label">Hobbies:</div>
+                    <div class="info-value">rizz/femboys</div>
+                </div>
+                
+                <!-- YENİ EKLENEN SATIR (KÜÇÜK YAZI BOYUTU) -->
+                <div class="info-row">
+                    <div class="info-label"></div>
+                    <div class="info-value small-text">completed all femboy achievement steam games</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // KAR TANELERİ
+        function createSnowfall() {
+            const container = document.getElementById('snowContainer');
+            const snowflakeCount = 100;
+            
+            for (let i = 0; i < snowflakeCount; i++) {
+                const snowflake = document.createElement('div');
+                snowflake.className = 'snowflake';
+                
+                const size = Math.random() * 5 + 2;
+                const startX = Math.random() * 100;
+                const fallDuration = Math.random() * 5 + 5;
+                const fallDelay = Math.random() * 5;
+                
+                snowflake.style.width = `${size}px`;
+                snowflake.style.height = `${size}px`;
+                snowflake.style.left = `${startX}vw`;
+                snowflake.style.top = `-10px`;
+                
+                snowflake.style.animation = `fall ${fallDuration}s linear ${fallDelay}s infinite`;
+                
+                const style = document.createElement('style');
+                style.textContent = `
+                    @keyframes fall {
+                        0% {
+                            transform: translateY(0) translateX(0);
+                            opacity: 0.8;
+                        }
+                        100% {
+                            transform: translateY(100vh) translateX(${Math.random() * 100 - 50}px);
+                            opacity: 0;
+                        }
+                    }
+                `;
+                document.head.appendChild(style);
+                
+                container.appendChild(snowflake);
+            }
+        }
+
+        // GÖRSEL KAYDIRMA ANİMASYONU - GÜNCELLENMİŞ VERSİYON
+        function setupImageScrolling() {
+            // Farklı hareket yönleri için gruplar
+            const downGroups = [
+                // Sol sütun 1 (en sol) - AŞAĞI
+                [
+                    '.character-left-down-1',
+                    '.character-left-down-2', 
+                    '.character-left-down-3',
+                    '.character-left-down-4',
+                    '.character-left-down-5',
+                    '.character-left-down-6'
+                ],
+                // Sağ sütun 1 (sağdan ikinci) - AŞAĞI
+                [
+                    '.character-right-down-1',
+                    '.character-right-down-2', 
+                    '.character-right-down-3',
+                    '.character-right-down-4',
+                    '.character-right-down-5',
+                    '.character-right-down-6'
+                ]
+            ];
+
+            const upGroups = [
+                // Sol sütun 2 (sol ikinci) - YUKARI
+                [
+                    '.character-left-up-1',
+                    '.character-left-up-2', 
+                    '.character-left-up-3',
+                    '.character-left-up-4',
+                    '.character-left-up-5',
+                    '.character-left-up-6'
+                ],
+                // Sağ sütun 2 (en sağ) - YUKARI
+                [
+                    '.character-right-up-1',
+                    '.character-right-up-2', 
+                    '.character-right-up-3',
+                    '.character-right-up-4',
+                    '.character-right-up-5',
+                    '.character-right-up-6'
+                ]
+            ];
+
+            // AŞAĞI İNEN GÖRSELLER için animasyon
+            downGroups.forEach((group, groupIndex) => {
+                const elements = group.map(selector => document.querySelector(selector));
+                let positions = elements.map(el => {
+                    const currentTop = parseInt(el.style.top) || 
+                                     parseInt(window.getComputedStyle(el).top);
+                    return currentTop;
+                });
+                
+                const speed = 20; // Daha akıcı
+                let lastTime = 0;
+                
+                function animateDown(timestamp) {
+                    if (!lastTime) lastTime = timestamp;
+                    const deltaTime = timestamp - lastTime;
+                    
+                    if (deltaTime > 16) { // ~60 FPS
+                        elements.forEach((el, index) => {
+                            if (el) {
+                                let currentTop = parseInt(el.style.top) || positions[index];
+                                
+                                // Görseli AŞAĞI kaydır
+                                let newTop = currentTop + 1;
+                                
+                                // Görsel ekranın altından çıktıysa, en üste gönder
+                                if (newTop > window.innerHeight + 100) {
+                                    // En üstteki görselin pozisyonunu bul
+                                    let minTop = Infinity;
+                                    elements.forEach(e => {
+                                        if (e) {
+                                            const top = parseInt(e.style.top) || 
+                                                       positions[elements.indexOf(e)];
+                                            if (top < minTop) minTop = top;
+                                        }
+                                    });
+                                    
+                                    // Yeni pozisyonu ayarla (en üstteki - 328px - 30px boşluk)
+                                    newTop = minTop - 328 - 30;
+                                }
+                                
+                                el.style.top = `${newTop}px`;
+                                positions[index] = newTop;
+                            }
+                        });
+                        lastTime = timestamp;
+                    }
+                    
+                    requestAnimationFrame(animateDown);
+                }
+                
+                requestAnimationFrame(animateDown);
+            });
+
+            // YUKARI ÇIKAN GÖRSELLER için animasyon
+            upGroups.forEach((group, groupIndex) => {
+                const elements = group.map(selector => document.querySelector(selector));
+                let positions = elements.map(el => {
+                    const currentTop = parseInt(el.style.top) || 
+                                     parseInt(window.getComputedStyle(el).top);
+                    return currentTop;
+                });
+                
+                const speed = 20; // Daha akıcı
+                let lastTime = 0;
+                
+                function animateUp(timestamp) {
+                    if (!lastTime) lastTime = timestamp;
+                    const deltaTime = timestamp - lastTime;
+                    
+                    if (deltaTime > 16) { // ~60 FPS
+                        elements.forEach((el, index) => {
+                            if (el) {
+                                let currentTop = parseInt(el.style.top) || positions[index];
+                                
+                                // Görseli YUKARI kaydır
+                                let newTop = currentTop - 1;
+                                
+                                // Görsel ekranın üstünden çıktıysa, en alta gönder
+                                if (newTop < -400) {
+                                    // En alttaki görselin pozisyonunu bul
+                                    let maxTop = -Infinity;
+                                    elements.forEach(e => {
+                                        if (e) {
+                                            const top = parseInt(e.style.top) || 
+                                                       positions[elements.indexOf(e)];
+                                            if (top > maxTop) maxTop = top;
+                                        }
+                                    });
+                                    
+                                    // Yeni pozisyonu ayarla (en alttaki + 328px + 30px boşluk)
+                                    newTop = maxTop + 328 + 30;
+                                }
+                                
+                                el.style.top = `${newTop}px`;
+                                positions[index] = newTop;
+                            }
+                        });
+                        lastTime = timestamp;
+                    }
+                    
+                    requestAnimationFrame(animateUp);
+                }
+                
+                requestAnimationFrame(animateUp);
+            });
+        }
+
+        // SAYFA YÜKLENDİĞİNDE
+        window.addEventListener('load', function() {
+            createSnowfall();
+            setupImageScrolling();
+            
+            console.log("Sayfa yüklendi!");
+            console.log("DEĞİŞİKLİKLER:");
+            console.log("- Hobbies: rizz/femboys olarak değiştirildi");
+            console.log("- Ortadaki görsel URL güncellendi");
+            console.log("- Son satır metni ve yazı boyutu güncellendi");
+        });
+
+        // SAYFA BOYUTU DEĞİŞİNCE
+        window.addEventListener('resize', function() {
+            const container = document.getElementById('snowContainer');
+            container.innerHTML = '';
+            createSnowfall();
+        });
+    </script>
+</body>
+</html>
